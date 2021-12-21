@@ -23,7 +23,7 @@ spec:
       annotations:
         prometheus.io/scrape: 'false'
     spec:
-      nodeName: k8s-node1
+      nodeName: k8s-node2
       serviceAccountName: monitor
       containers:
       - name: prometheus
