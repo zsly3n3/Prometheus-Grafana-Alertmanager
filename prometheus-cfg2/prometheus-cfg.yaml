@@ -381,7 +381,7 @@ data:
           description: "{{ $labels.instance }}的内存使用率超过90%,当前使用率[{{ $value }}],需要排查处理"
       - alert: InstanceDown
         expr: up == 0
-        for: 1F0m
+        for: 5s
         labels:
           severity: critical
         annotations:   
