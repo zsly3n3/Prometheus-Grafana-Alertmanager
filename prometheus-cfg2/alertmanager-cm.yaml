@@ -14,9 +14,9 @@ data:
       smtp_require_tls: false
     route:
       group_by: [alertname]
-      group_wait: 10s
-      group_interval: 20s
-      repeat_interval: 20s
+      group_wait: 30s
+      group_interval: 2m
+      repeat_interval: 1h
       receiver: default-receiver
     inhibit_rules:
       - source_match:
