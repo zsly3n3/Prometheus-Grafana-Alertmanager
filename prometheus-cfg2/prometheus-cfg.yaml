@@ -272,14 +272,6 @@ data:
         annotations:
           description: "组件{{$labels.job}}({{$labels.instance}}): 使用虚拟内存超过4G"
           value: "{{ $value }}"
-      - alert: kubernetes-etcd
-        expr: process_virtual_memory_bytes{job=~"kubernetes-etcd"}  > 4000000000
-        for: 2s
-        labels:
-          severity: warnning
-        annotations:
-          description: "组件{{$labels.job}}({{$labels.instance}}): 使用虚拟内存超过4G"
-          value: "{{ $value }}"
       - alert: kube-dns
         expr: process_virtual_memory_bytes{k8s_app=~"kube-dns"}  > 4000000000
         for: 2s
