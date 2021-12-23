@@ -14,9 +14,9 @@ data:
       smtp_require_tls: false
     route:
       group_by: [alertname]
-      group_wait: 30s
-      group_interval: 5m
-      repeat_interval: 1h
+      group_wait: 10s
+      group_interval: 20s
+      repeat_interval: 20s
       receiver: default-receiver
     inhibit_rules:
       - source_match:
@@ -27,5 +27,5 @@ data:
     receivers:
     - name: 'default-receiver'
       email_configs:
-      - to: 'wmj@rebornplay.com,zengyi@rebornplay.com'
+      - to: 'wmj@rebornplay.com'
         send_resolved: true
