@@ -6,7 +6,7 @@ metadata:
 data:
   alertmanager.yml: |-
     global:
-      resolve_timeout: 1m
+      resolve_timeout: 5m
       smtp_smarthost: 'smtp.163.com:25'
       smtp_from: 'zsly3n3@163.com'
       smtp_auth_username: 'zsly3n3'
@@ -16,10 +16,16 @@ data:
       group_by: [alertname]
       group_wait: 10s
       group_interval: 10s
-      repeat_interval: 24000h
+      repeat_interval: 20s
       receiver: default-receiver
+    inhibit_rules:
+      - source_match:
+          severity: 'critical'
+        target_match:
+          severity: 'warning'
+        equal: ['alertname', 'dev', 'instance']
     receivers:
     - name: 'default-receiver'
       email_configs:
-      - to: 'pop3n3@163.com,zengyi@rebornplay.com'
+      - to: 'pop3n3@163.com'
         send_resolved: true
