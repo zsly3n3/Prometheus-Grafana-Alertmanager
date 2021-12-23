@@ -16,10 +16,10 @@ data:
       group_by: [alertname]
       group_wait: 10s
       group_interval: 10s
-      repeat_interval: 10m
+      repeat_interval: 24000h
       receiver: default-receiver
     receivers:
     - name: 'default-receiver'
       email_configs:
       - to: 'pop3n3@163.com,zengyi@rebornplay.com'
-        send_resolved: false
+        send_resolved: true
