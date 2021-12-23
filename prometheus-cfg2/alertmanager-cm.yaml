@@ -22,4 +22,4 @@ data:
     - name: 'default-receiver'
       email_configs:
       - to: 'pop3n3@163.com,zengyi@rebornplay.com'
-        send_resolved: false
+        send_resolved: true
