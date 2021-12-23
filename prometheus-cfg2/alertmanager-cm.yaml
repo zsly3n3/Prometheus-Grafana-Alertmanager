@@ -16,7 +16,7 @@ data:
       group_by: [alertname]
       group_wait: 10s
       group_interval: 10s
-      repeat_interval: 20s
+      repeat_interval: 1h
       receiver: default-receiver
     inhibit_rules:
       - source_match:
