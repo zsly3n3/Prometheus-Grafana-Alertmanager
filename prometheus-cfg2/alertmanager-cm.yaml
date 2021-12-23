@@ -16,7 +16,7 @@ data:
       group_by: [alertname]
       group_wait: 10s
       group_interval: 10s
-      repeat_interval: 1h
+      repeat_interval: 2400h
       receiver: default-receiver
     inhibit_rules:
       - source_match:
@@ -28,4 +28,4 @@ data:
     - name: 'default-receiver'
       email_configs:
       - to: 'pop3n3@163.com'
-        send_resolved: true
+        send_resolved: false
