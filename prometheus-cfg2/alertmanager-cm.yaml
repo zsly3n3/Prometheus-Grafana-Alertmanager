@@ -16,11 +16,7 @@ data:
       group_by: [alertname]
       group_wait: 30s
       group_interval: 2m
-<<<<<<< HEAD
-      repeat_interval: 1m
-=======
       repeat_interval: 10m
->>>>>>> 671cffaf33ce2d89363b501494db431b0ca7191c
       receiver: default-receiver
     inhibit_rules:
       - source_match:
