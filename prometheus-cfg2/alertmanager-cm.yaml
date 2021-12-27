@@ -27,5 +27,5 @@ data:
     receivers:
     - name: 'default-receiver'
       email_configs:
+      - send_resolved: true
       - to: 'wmj@rebornplay.com'
-        send_resolved: true
