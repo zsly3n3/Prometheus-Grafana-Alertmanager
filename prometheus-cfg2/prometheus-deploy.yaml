@@ -27,7 +27,7 @@ spec:
       serviceAccountName: monitor
       containers:
       - name: prometheus
-        image: prom/prometheus:v2.2.1
+        image: prom/prometheus:latest
         imagePullPolicy: IfNotPresent
         command:
         - "/bin/prometheus"
