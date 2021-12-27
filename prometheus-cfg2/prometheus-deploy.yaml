@@ -47,7 +47,7 @@ spec:
         - name: k8s-certs
           mountPath: /var/run/secrets/kubernetes.io/k8s-certs/etcd/
       - name: alertmanager
-        image: prom/alertmanager:v0.14.0
+        image: prom/alertmanager:latest
         imagePullPolicy: IfNotPresent
         args:
         - "--config.file=/etc/alertmanager/alertmanager.yml"
