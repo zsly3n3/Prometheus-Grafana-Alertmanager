@@ -14,16 +14,10 @@ data:
       smtp_require_tls: false
     route:
       group_by: ['...']
-      group_wait: 30s
-      group_interval: 2m
+      group_wait: 10s
+      group_interval: 10s
       repeat_interval: 1m
       receiver: default-receiver
-    inhibit_rules:
-      - source_match:
-          severity: 'critical'
-        target_match:
-          severity: 'warning'
-        equal: ['alertname', 'dev', 'instance']
     receivers:
     - name: 'default-receiver'
       email_configs:
