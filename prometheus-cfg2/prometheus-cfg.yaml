@@ -141,42 +141,42 @@ data:
       rules:
       - alert: kube-proxy的cpu使用率大于80%
         expr: rate(process_cpu_seconds_total{job=~"kubernetes-kube-proxy"}[1m]) * 100 > 80
-        for: 5m
+        for: 5s
         labels:
           severity: warnning
         annotations:
           description: "{{$labels.instance}}的{{$labels.job}}组件的cpu使用率超过80%"
       - alert: scheduler的cpu使用率大于80%
         expr: rate(process_cpu_seconds_total{job=~"kubernetes-schedule"}[1m]) * 100 > 80
-        for: 5m
+        for: 5s
         labels:
           severity: warnning
         annotations:
           description: "{{$labels.instance}}的{{$labels.job}}组件的cpu使用率超过80%"
       - alert: controller-manager的cpu使用率大于80%
         expr: rate(process_cpu_seconds_total{job=~"kubernetes-controller-manager"}[1m]) * 100 > 80
-        for: 5m
+        for: 5s
         labels:
           severity: warnning
         annotations:
           description: "{{$labels.instance}}的{{$labels.job}}组件的cpu使用率超过80%"
       - alert: apiserver的cpu使用率大于80%
         expr: rate(process_cpu_seconds_total{job=~"kubernetes-apiserver"}[1m]) * 100 > 80
-        for: 5m
+        for: 5s
         labels:
           severity: warnning
         annotations:
           description: "{{$labels.instance}}的{{$labels.job}}组件的cpu使用率超过80%"
       - alert: etcd的cpu使用率大于80%
         expr: rate(process_cpu_seconds_total{job=~"kubernetes-etcd"}[1m]) * 100 > 80
-        for: 5m
+        for: 5s
         labels:
           severity: warnning
         annotations:
           description: "{{$labels.instance}}的{{$labels.job}}组件的cpu使用率超过80%"
       - alert: kube-state-metrics的cpu使用率大于80%
         expr: rate(process_cpu_seconds_total{k8s_app=~"kube-state-metrics"}[1m]) * 100 > 80
-        for: 5m
+        for: 5s
         labels:
           severity: warnning
         annotations:
@@ -185,7 +185,7 @@ data:
           threshold: "80%"
       - alert: coredns的cpu使用率大于80%
         expr: rate(process_cpu_seconds_total{k8s_app=~"kube-dns"}[1m]) * 100 > 80
-        for: 5m
+        for: 5s
         labels:
           severity: warnning
         annotations:
@@ -194,7 +194,7 @@ data:
           threshold: "80%"
       - alert: kube-proxy打开句柄数>4000
         expr: process_open_fds{job=~"kubernetes-kube-proxy"}  > 4000
-        for: 5m
+        for: 5s
         labels:
           severity: critical
         annotations:
@@ -202,7 +202,7 @@ data:
           value: "{{ $value }}"
       - alert: kubernetes-schedule打开句柄数>4000
         expr: process_open_fds{job=~"kubernetes-schedule"}  > 4000
-        for: 5m
+        for: 5s
         labels:
           severity: critical
         annotations:
@@ -210,7 +210,7 @@ data:
           value: "{{ $value }}"
       - alert: kubernetes-controller-manager打开句柄数>4000
         expr: process_open_fds{job=~"kubernetes-controller-manager"}  > 4000
-        for: 5m
+        for: 5s
         labels:
           severity: critical
         annotations:
@@ -218,7 +218,7 @@ data:
           value: "{{ $value }}"
       - alert: kubernetes-apiserver打开句柄数>4000
         expr: process_open_fds{job=~"kubernetes-apiserver"}  > 4000
-        for: 5m
+        for: 5s
         labels:
           severity: critical
         annotations:
@@ -226,7 +226,7 @@ data:
           value: "{{ $value }}"
       - alert: kubernetes-etcd打开句柄数>4000
         expr: process_open_fds{job=~"kubernetes-etcd"}  > 4000
-        for: 5m
+        for: 5s
         labels:
           severity: critical
         annotations:
@@ -234,7 +234,7 @@ data:
           value: "{{ $value }}"
       - alert: coredns
         expr: process_open_fds{k8s_app=~"kube-dns"}  > 4000
-        for: 5m
+        for: 5s
         labels:
           severity: critical
         annotations:
@@ -242,7 +242,7 @@ data:
           value: "{{ $value }}"
       - alert: kube-proxy
         expr: process_virtual_memory_bytes{job=~"kubernetes-kube-proxy"}  > 4000000000
-        for: 5m
+        for: 5s
         labels:
           severity: warnning
         annotations:
@@ -250,7 +250,7 @@ data:
           value: "{{ $value }}"
       - alert: scheduler
         expr: process_virtual_memory_bytes{job=~"kubernetes-schedule"}  > 4000000000
-        for: 5m
+        for: 5s
         labels:
           severity: warnning
         annotations:
@@ -258,7 +258,7 @@ data:
           value: "{{ $value }}"
       - alert: kubernetes-controller-manager
         expr: process_virtual_memory_bytes{job=~"kubernetes-controller-manager"}  > 4000000000
-        for: 5m
+        for: 5s
         labels:
           severity: warnning
         annotations:
@@ -266,7 +266,7 @@ data:
           value: "{{ $value }}"
       - alert: kubernetes-apiserver
         expr: process_virtual_memory_bytes{job=~"kubernetes-apiserver"}  > 4000000000
-        for: 5m
+        for: 5s
         labels:
           severity: warnning
         annotations:
@@ -274,7 +274,7 @@ data:
           value: "{{ $value }}"
       - alert: kube-dns
         expr: process_virtual_memory_bytes{k8s_app=~"kube-dns"}  > 4000000000
-        for: 5m
+        for: 5s
         labels:
           severity: warnning
         annotations:
@@ -282,7 +282,7 @@ data:
           value: "{{ $value }}"
       - alert: HttpRequestsAvg
         expr: sum(rate(rest_client_requests_total{job=~"kubernetes-kube-proxy|kubernetes-kubelet|kubernetes-schedule|kubernetes-control-manager|kubernetes-apiservers"}[1m]))  > 4000
-        for: 5m
+        for: 5s
         labels:
           team: admin
         annotations:
@@ -291,7 +291,7 @@ data:
           threshold: "4000"
       - alert: Pod_restarts
         expr: kube_pod_container_status_restarts_total{namespace=~"kube-system|default|monitor-sa"} > 0
-        for: 5m
+        for: 5s
         labels:
           severity: warnning
         annotations:
@@ -300,7 +300,7 @@ data:
           threshold: "0"
       - alert: Pod_waiting
         expr: kube_pod_container_status_waiting_reason{namespace=~"kube-system|default"} == 1
-        for: 5m
+        for: 5s
         labels:
           team: admin
         annotations:
@@ -309,7 +309,7 @@ data:
           threshold: "1"   
       - alert: Pod_terminated
         expr: kube_pod_container_status_terminated_reason{namespace=~"kube-system|default|monitor-sa"} == 1
-        for: 5m
+        for: 5s
         labels:
           team: admin
         annotations:
@@ -318,7 +318,7 @@ data:
           threshold: "1"
       - alert: Etcd_leader
         expr: etcd_server_has_leader{job="kubernetes-etcd"} == 0
-        for: 5m
+        for: 5s
         labels:
           team: admin
         annotations:
@@ -327,7 +327,7 @@ data:
           threshold: "0"
       - alert: Etcd_leader_changes
         expr: rate(etcd_server_leader_changes_seen_total{job="kubernetes-etcd"}[1m]) > 0
-        for: 5m
+        for: 5s
         labels:
           team: admin
         annotations:
@@ -336,7 +336,7 @@ data:
           threshold: "0"
       - alert: Etcd_failed
         expr: rate(etcd_server_proposals_failed_total{job="kubernetes-etcd"}[1m]) > 0
-        for: 5m
+        for: 5s
         labels:
           team: admin
         annotations:
@@ -345,7 +345,7 @@ data:
           threshold: "0"
       - alert: Etcd_db_total_size
         expr: etcd_debugging_mvcc_db_total_size_in_bytes{job="kubernetes-etcd"} > 50000000000
-        for: 5m
+        for: 5s
         labels:
           team: admin
         annotations:
@@ -354,7 +354,7 @@ data:
           threshold: "50G"
       - alert: Endpoint_ready
         expr: kube_endpoint_address_not_ready{namespace=~"kube-system|default"} == 1
-        for: 5m
+        for: 5s
         labels:
           team: admin
         annotations:
@@ -365,7 +365,7 @@ data:
       rules:
       - alert: 物理节点cpu使用率
         expr: 100-avg(irate(node_cpu_seconds_total{mode="idle"}[5m])) by(instance)*100 > 90
-        for: 5m
+        for: 5s
         labels:
           severity: ccritical
         annotations:
@@ -373,7 +373,7 @@ data:
           description: "{{ $labels.instance }}的cpu使用率超过90%,当前使用率[{{ $value }}],需要排查处理" 
       - alert: 物理节点内存使用率
         expr: (node_memory_MemTotal_bytes - (node_memory_MemFree_bytes + node_memory_Buffers_bytes + node_memory_Cached_bytes)) / node_memory_MemTotal_bytes * 100 > 90
-        for: 5m
+        for: 5s
         labels:
           severity: critical
         annotations:
@@ -381,7 +381,7 @@ data:
           description: "{{ $labels.instance }}的内存使用率超过90%,当前使用率[{{ $value }}],需要排查处理"
       - alert: InstanceDown
         expr: up == 0
-        for: 5m
+        for: 5s
         labels:
           severity: critical
         annotations:   
@@ -389,7 +389,7 @@ data:
           description: "{{ $labels.instance }}: 服务器延时超过2分钟"
       - alert: 物理节点磁盘的IO性能
         expr: 100-(avg(irate(node_disk_io_time_seconds_total[1m])) by(instance)* 100) < 60
-        for: 5m
+        for: 5s
         labels:
           severity: critical
         annotations:
@@ -397,7 +397,7 @@ data:
           description: "{{$labels.mountpoint }} 流入磁盘IO大于60%(目前使用:{{$value}})"
       - alert: 入网流量带宽
         expr: ((sum(rate (node_network_receive_bytes_total{device!~'tap.*|veth.*|br.*|docker.*|virbr*|lo*'}[5m])) by (instance)) / 100) > 102400
-        for: 5m
+        for: 5s
         labels:
           severity: critical
         annotations:
@@ -405,7 +405,7 @@ data:
           description: "{{$labels.mountpoint }}流入网络带宽持续5分钟高于100M. RX带宽使用率{{$value}}"
       - alert: 出网流量带宽
         expr: ((sum(rate (node_network_transmit_bytes_total{device!~'tap.*|veth.*|br.*|docker.*|virbr*|lo*'}[5m])) by (instance)) / 100) > 102400
-        for: 5m
+        for: 5s
         labels:
           severity: critical
         annotations:
@@ -413,7 +413,7 @@ data:
           description: "{{$labels.mountpoint }}流出网络带宽持续5分钟高于100M. RX带宽使用率{{$value}}"
       - alert: TCP会话
         expr: node_netstat_Tcp_CurrEstab > 1000
-        for: 5m
+        for: 5s
         labels:
           severity: critical
         annotations:
@@ -421,7 +421,7 @@ data:
           description: "{{$labels.mountpoint }} TCP_ESTABLISHED大于1000%(目前使用:{{$value}}%)"
       - alert: 磁盘容量
         expr: 100-(node_filesystem_free_bytes{fstype=~"ext4|xfs"}/node_filesystem_size_bytes {fstype=~"ext4|xfs"}*100) > 80
-        for: 5m
+        for: 5s
         labels:
           severity: critical
         annotations:
