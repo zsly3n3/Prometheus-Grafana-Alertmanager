@@ -137,7 +137,7 @@ data:
       - targets: ['10.12.0.156:2379']
   rules.yml: |
     groups:
-    - name: example
+    - name: kubesystem
       rules:
       - alert: kube-proxy的cpu使用率大于80%
         expr: rate(process_cpu_seconds_total{job=~"kubernetes-kube-proxy"}[1m]) * 100 > 80
@@ -361,7 +361,7 @@ data:
           description: "空间{{$labels.namespace}}({{$labels.instance}}): 发现{{$labels.endpoint}}不可用"
           value: "{{ $value }}"
           threshold: "1"
-    - name: 物理节点状态-监控告警
+    - name: kubepod
       rules:
       - alert: 物理节点cpu使用率
         expr: 100-avg(irate(node_cpu_seconds_total{mode="idle"}[5m])) by(instance)*100 > 90

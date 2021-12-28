@@ -27,7 +27,7 @@ spec:
       serviceAccountName: monitor
       containers:
       - name: prometheus
-        image: bitnami/prometheus:2.32.1
+        image: prom/prometheus:latest
         imagePullPolicy: IfNotPresent
         command:
         - "/bin/prometheus"
@@ -47,7 +47,7 @@ spec:
         - name: k8s-certs
           mountPath: /var/run/secrets/kubernetes.io/k8s-certs/etcd/
       - name: alertmanager
-        image: bitnami/alertmanager:0.23.0
+        image: prom/alertmanager:latest
         imagePullPolicy: IfNotPresent
         args:
         - "--config.file=/etc/alertmanager/alertmanager.yml"
